@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+        "outDir": "src",
+        "sourceMap": true,
+        "target": "ES2020",
+        "noEmitOnError": true,
+        "module": "CommonJS",
+        "moduleResolution": "Node"
+    }
+}

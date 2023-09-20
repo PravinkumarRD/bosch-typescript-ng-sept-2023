@@ -1,0 +1,150 @@
+Introduction Typescript - 
+	Typescript is a development Language
+	Typescript is a superset of JavaScript [ECMAScript] which compiles the code into plain JavaScript
+	Typescript is a Strongly Typed Language
+
+	Typescript Language - Typescript Compiler [TSC.exe] [Transpilation] = [Transform + Compilation]
+
+	Typescript Compiler is fully customizable [Compiler options]
+		1) Command line
+		2) tsconfig.json [Typescript Configuration which contains compiler options]
+
+	Install Typescript globally on your machine using Node Package Manager
+		npm install typescript --global
+
+What is not supported in ECMAScript/JavaScript?
+
+	1) Strong Typing
+	2) Access modifiers interm of classes 
+	3) Interfaces [SOA - Service Oritented Architecture]
+
+	Science Department [HodOfDepartment]
+		Physics
+		Chemistry
+		Biology
+	interface IBio{
+		bioCalci();
+	}
+
+	interface HoD extends IBio,IChem,IPhys{
+
+	}
+
+	Class Science implements IBio,IChem,IPhys{
+		phyCalci(){
+			//some logic
+		}
+		bioCalci(){
+			//some logic
+		}
+		chemCalci(){
+			//some logic
+		}
+	}
+
+	IBio obj= new Science();
+	IChemTeacher obj= new Science();
+	IPhyTeacher obj= new Science();
+	Hod obj= new Science();
+
+Develop Purchase Order System
+	Customer, Employee, Category, Product, Order, OrderDetail, Invoice, Supplier, Shipper
+
+	CRUD operations 
+
+	Generics - Generics Methods, Properties, Classes, Interfaces
+
+	interface CommonCrud<T>{
+		getAll():T[];
+		getDetails(int id):T;
+		int insert(T item);
+		int update(T item);
+		int delete(int id);
+	}
+
+	class CommonCurdOperations<T> implements CommonCurd<T> where T:Class{
+		getAll():T[]{
+			//some logic
+		}
+		getDetails(int id):T{
+			//some logic
+		}
+		int insert(T item){
+			//some logic
+		}
+		int update(T item){
+			//some logic
+		}
+		int delete(int id){
+			//some logic
+		}
+	}
+
+
+	ICommonCrud<Customer> customerCurd = new CommonCurdOperations<Customer>();
+	ICommonCrud<Employee> employeeCurd = new CommonCurdOperations<Employee>();
+
+
+New Types in Typescript - 
+	1) any
+	2) void
+
+Functions in Typescript
+
+this keyword in JavaScript/Typescript.
+	The context of this keyword will get changed when you use function keyword to execute your callback functions. Because functions written with function keyword has implicit binding with this keyword
+
+Arrow functions - Arrow function does not have implicit binding with this keyword and hence the context will never get changes in callback functions 
+
+
+Generalization-To-Specialization rule in Inheritance - OOP
+
+	IS-A 
+		Customer IS-A Person
+	and 
+	HAS-A
+		Customer HAS-A Address
+
+JavaScript Modules - 
+
+		1) CJS - CommonJS Module Pattern
+			module.exports ={
+
+			}
+			require(''); //Import
+		2) AMD - Asynchronous Module Definition 
+		3) UMD - Universal Module Definition
+		4) ESM - ECMAScript Module Pattern
+			import and export keywords
+
+
+Advantages of JavaScript Modules - 
+	1) Modules define their own scope [They do not pollute the global scope]
+	2) Restrict the accessbility of the functions from the given module
+	3) Dependency Resolution should be implemented correctly
+	4) Module will load exactly once in your application
+	5) Singleton pattern implementation
+	6) Eager loading and lazy loading of JavaScript modules
+
+How does modules work?
+
+	1) Module Resolution [Top-To-Bottom]
+	2) Module Loading [Bottom-To-Top]
+	3) Module Execution
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

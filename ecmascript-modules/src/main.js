@@ -1,0 +1,28 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+console.log('Main Module Started!');
+//import { addition, multiply, divide, subtract } from "./app/basic-math";
+const MathObj = require("./app/basic-math");
+const customer_1 = require("./app/customer");
+const customer_2 = require("./app/customer");
+const employee_1 = require("./app/employee");
+console.log(`Addition - ${MathObj.addition(100, 200)}`);
+console.log(`Multiply - ${MathObj.multiply(100, 200)}`);
+console.log(`Square from Main Module is ${MathObj.square(56)}`);
+customer_1.default.firstName = "Manisha";
+customer_1.default.lastName = "K.";
+customer_1.default.city = "Pune";
+console.log(customer_1.default.getPersonInfo());
+console.log(customer_2.default.getPersonInfo());
+const e1 = new employee_1.default();
+e1.firstName = "Alisha";
+e1.lastName = "C.";
+e1.city = "Delhi";
+console.log(e1.getPersonInfo());
+const e2 = new employee_1.default();
+e2.firstName = "Manish";
+e2.lastName = "Kaushik";
+e2.city = "Raipur";
+console.log(e2.getPersonInfo());
+console.log('Main Module Ended!');
+//# sourceMappingURL=main.js.map
