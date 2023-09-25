@@ -1,137 +1,406 @@
-Introduction Typescript - 
-	Typescript is a development Language
-	Typescript is a superset of JavaScript [ECMAScript] which compiles the code into plain JavaScript
-	Typescript is a Strongly Typed Language
+Why Angular?
 
-	Typescript Language - Typescript Compiler [TSC.exe] [Transpilation] = [Transform + Compilation]
+1) Angular is a framework for developing Desktop, Web Broswer, Mobile Web, Mobile Native
+2) Progresive Web Application Development
+3) Angular framework is modular
+4) Angular also suggests Angular application development in modular way
+5) Eager loading and Lazy loading
+6) Multiple languages for developing Angular applications
+	[ES5/ESNext/Typescript/Dart]
+7) Two compilation models
+	[JIT - Just-In-Time] [Before 9 - Default]
+	[AoT - Ahead-Of-Time] [Default - Version - 9 and onwards]
+8) From Angular 2-8 We have View Engine as rendering engine/ From 9 and onwards, Ivy rendering engine
+9) Offers component based development
+10) Directives [Out-of-the-box/Custom]
+11) Angular Pipes for data formatting [Out-of-the-box/Custom]
+12) Single Page Application [SPA] Development
+13) Routing library [@angular/router]
+14) Rich Data Binding support - 
+	[Source-To-Destination/Destination-To-Source/Two-Way]
+15) Zone.js library
+16) CDC - Change Detection Cycle
+17) Internationalization [i18N - Library]
+18) IoC [Angular - Injector/Provider] and D.I. - Dependency Injection/ Inversion Principle
+19) HTTP Support [GET/POST/PUT/DELETE] with interception support
+20) Services/Custom Services [Reusing data and logic]
+21) Angular Development - 
+	1) Application
+	2) Library
+22) Angular Elements - Reuse Angular components in Non-angular applications [React, Vue, Html, ...]
+23) Angular Forms - 
+	1) Template Driven Forms
+	2) Reactive/Model Driven Forms
+24) Angular CLI tool - @angular/cli
+25) Angular framework has integration with third-party testing framework - Jasmine
+26) Karma Test runner
+27) Make your Angular application SEOs friendly, you have to render Angular application on Server [SSR - Server Side Rendering] - @angular/universal
+28) Rich Animation support @angular/animations
+29) Angular Material Library
+30) RxJS - Reactive Extensions For JavaScript - library [Observable-Observer Pattern]
 
-	Typescript Compiler is fully customizable [Compiler options]
-		1) Command line
-		2) tsconfig.json [Typescript Configuration which contains compiler options]
+Angular Application Bootstrapping Process
 
-	Install Typescript globally on your machine using Node Package Manager
-		npm install typescript --global
+5-Major building of Angular Framework - All of them are classes
 
-What is not supported in ECMAScript/JavaScript?
+	1) NgModule [Menifest/List]
+	2) Component
+	3) Directive
+	4) Pipe
+	5) Service
 
-	1) Strong Typing
-	2) Access modifiers interm of classes 
-	3) Interfaces [SOA - Service Oritented Architecture]
-
-	Science Department [HodOfDepartment]
-		Physics
-		Chemistry
-		Biology
-	interface IBio{
-		bioCalci();
-	}
-
-	interface HoD extends IBio,IChem,IPhys{
-
-	}
-
-	Class Science implements IBio,IChem,IPhys{
-		phyCalci(){
-			//some logic
-		}
-		bioCalci(){
-			//some logic
-		}
-		chemCalci(){
-			//some logic
-		}
-	}
-
-	IBio obj= new Science();
-	IChemTeacher obj= new Science();
-	IPhyTeacher obj= new Science();
-	Hod obj= new Science();
-
-Develop Purchase Order System
-	Customer, Employee, Category, Product, Order, OrderDetail, Invoice, Supplier, Shipper
-
-	CRUD operations 
-
-	Generics - Generics Methods, Properties, Classes, Interfaces
-
-	interface CommonCrud<T>{
-		getAll():T[];
-		getDetails(int id):T;
-		int insert(T item);
-		int update(T item);
-		int delete(int id);
-	}
-
-	class CommonCurdOperations<T> implements CommonCurd<T> where T:Class{
-		getAll():T[]{
-			//some logic
-		}
-		getDetails(int id):T{
-			//some logic
-		}
-		int insert(T item){
-			//some logic
-		}
-		int update(T item){
-			//some logic
-		}
-		int delete(int id){
-			//some logic
-		}
-	}
+Let's create first Angular application - 
 
 
-	ICommonCrud<Customer> customerCurd = new CommonCurdOperations<Customer>();
-	ICommonCrud<Employee> employeeCurd = new CommonCurdOperations<Employee>();
+@NgModule({
+    imports:[Day2Module], Load all the dependency modules for eager loading 
+    exports:[], //Anything which you want to access outside the module when the module is loaded with eager loading
+    declarations:[], //Components, Pipes and Directives
+    providers:[], //Services
+    bootstrap:[RootComp, XyzComp] //First components to be rendered when you run Angular application
+})
+class Day1Module{
 
+}
 
-New Types in Typescript - 
-	1) any
-	2) void
+@NgModule({
+    imports:[],
+    exports:[B, P2, D2],
+    declarations:[A, B, C, P1, P2, P3, D1, D2],
+    providers:[]
+})
+class Day2Module{
 
-Functions in Typescript
+}
 
-this keyword in JavaScript/Typescript.
-	The context of this keyword will get changed when you use function keyword to execute your callback functions. Because functions written with function keyword has implicit binding with this keyword
+@Component({
+    selector:'', //The name of an element forExample [<bosch-root></bosch-root>]
+    template:''// Display
+})
 
-Arrow functions - Arrow function does not have implicit binding with this keyword and hence the context will never get changes in callback functions 
+https://codepen.io/pravinkumarcode/pen/PoaEXyQ
 
+How do you cofigure CSS Bootstrap Framework in Angular application?
 
-Generalization-To-Specialization rule in Inheritance - OOP
+Assignment - 
 
-	IS-A 
-		Customer IS-A Person
-	and 
-	HAS-A
-		Customer HAS-A Address
+Create new Angular application with the name bosch-events-portal
 
-JavaScript Modules - 
+Step - 1 [One time process only]
+	npm install @angular/cli
 
-		1) CJS - CommonJS Module Pattern
-			module.exports ={
+Step - 2 - To create new Angular application
+	ng new application-name
 
-			}
-			require(''); //Import
-		2) AMD - Asynchronous Module Definition 
-		3) UMD - Universal Module Definition
-		4) ESM - ECMAScript Module Pattern
-			import and export keywords
+Step - 3
+	cd application-name
 
-
-Advantages of JavaScript Modules - 
-	1) Modules define their own scope [They do not pollute the global scope]
-	2) Restrict the accessbility of the functions from the given module
-	3) Dependency Resolution should be implemented correctly
-	4) Module will load exactly once in your application
-	5) Singleton pattern implementation
-	6) Eager loading and lazy loading of JavaScript modules
-
-How does modules work?
-
-	1) Module Resolution [Top-To-Bottom]
-	2) Module Loading [Bottom-To-Top]
-	3) Module Execution
+Step - 4 - To run the Angular application in Development mode
+	ng serve
 	
+Configure Bootswatch United theme along with bootstrap JavaScript Bundle in this application.
+
+Step - 1 - install Bootstrap and Bootswatch packages in Angular application
+		npm install bootstrap bootswatch
+Step - 2 - Open angular.json and configure both the packages [.css and .js] in build section under architect object - 
+	"styles": [
+              "bootswatch/dist/united/bootstrap.min.css",
+              "src/styles.css"
+            ],
+        "scripts": [
+              "bootstrap/dist/js/bootstrap.bundle.min.js"
+            ]
+PoC - Proof Of Concept 
+	Bosch Events Portal - Fullstack Application [Java/Microsoft web API] [SPA] [Authentication and Authorization] [Role Based Authorization] [Security Trimming]
+
+src
+	main.ts
+	app
+		app.module.ts
+		app.component.[ts,spec.ts,html,css]
+		employees	
+			employees.module.ts
+			components
+				employees-list
+					employees-list.component.[ts,spec.ts,html,css]
+				employee-details
+					employee-details.component.[ts,spec.ts,html,css]
+				register-employee
+					register-employee.component.[ts,spec.ts,html,css]
+			models
+				employee.[ts,spec.ts]
+			pipes
+				one.pipe.[ts,spec.ts]
+			directives
+				highlighter.directive.[ts,.spec.ts]
+			services
+				employees.service.[ts/spec.ts]
+		events
+			events.module.ts
+			components
+				...
+			models
+				...
+			pipes
+				...
+			directives
+				...
+			services
+				...
+		home
+			home.module.ts
+			components
+				...
+		navigation
+			navigation.module.ts
+			components
+				nav-bar
+					nav-bar.component.[ts, spec.ts, html, css]
+				footer
+					footer.component.[ts, spec.ts, html, css]
+		security
+			
+			security.module.ts
+			components
+				login, user-registration, forgot-password, change-password
+				...
+			models
+				...
+			pipes
+				...
+			directives
+				...
+			services
+				...
+		shared
+			shared.module.ts
+			components
+				...
+			models
+				...
+			pipes
+				...
+			directives
+				...
+			services
+				...
+
+Angular CLI tool generate commands
+
+	ng g m, c, p, d, class, interface name-of-the-feature
+
+	For Example  - 
+
+		ng g m employees
+			Create employees folder and add module.ts file
+		ng g c employees/components/employees-list
+			Create components folder and inside components folder, it will create employees-list folder in which it will add 4 file for the component
+		ng g class employees/models/employee
+			employee.ts
+		ng g s employees/services/employees
+			employees.service.ts
+
+		ng g p employees/pipes/pipe-name
+
+		ng g d employees/directives/directive-name
+			directive-name
+				directive-name.directive.ts/.sepc.ts
+		ng g interface employees/models/interface-name
+
+		...
+
+			
+Introduction to Component - 
+
+	Two types of Templates - [template property of Component Metadata]
+		1) In-line Template
+			i) Single/Double quotes
+			ii) Multi-line template code using backtick syntax
+		2) Linked/External Template - [templateUrl property of Component Metadata] [.html file]
+
+	CSS
+		1) Inline - [styles property of component metadata]
+		2) External Styles - [stylesUrl:[] -  property of component metadata]
+
+
+To format the data which you are displaying, you will use Pipes in Angular application - 
+
+	1) In-Built Pipes
+	2) Third-Party pipes
+	3) Custom Pipes
+		i) Develop a pipe which will display the date in a different language
+			property|globalDate:'es-ES':'':''
+		ii) Develop a pipe which will filter the events list by event name
+			events|filterEventByName:'Q'
+
+Pipes are used in Templates - 
+
+	{{title|pipe-name}}
+	[innerText]="title|pipe-name"
+
+
+
+import { Pipe, PipeTransform } from '@angular/core'
+
+
+@Pipe({
+	name:'date'
+})
+export class DatePipe implements PipeTransform{
+	transform(value:unknown, ...args:unknown[]):unknown{
+		//logic
+	}
+}
+
+
+property|date
+
+
+
+Two way binding, you have to use ngModel directive - 
+
+	@angular/forms
+		FormsModule
+			ngModel
+
+
+Intro to MongoDB Server
+
+RDBMS						NoSQL - MongoDB Server
+	Databases					Databases
+		Tables						Collection
+			Rows and Columns				Documents
+
+What is document?
+	Document is a JSON like object
+
+Queries - 
+
+	1) Create new database in MongoDB
+		use bosch-events-db;
+	2) List all the databases under MongoDB server
+		show dbs;
+	3) Create new collection
+		db.createCollection("users");
+		db.createCollection("events");
+	4) Show all collections
+		show collections;
+	5) Insert documents in MongoDB Collection
+		db.users.insertOne({})
+
+REST API for Node JS [Java Developers only]
+	Below are the endpoints - 
+
+		1) http://localhost:9090/api/events [GET - This fetch all the documents from events collection]
+		2) http://localhost:9090/api/events/1002 [GET - This fetch single document from events collection]	
+		3) http://localhost:9090/api/events [POST - Insert new event in events collection]
+
+How to run REST API developed using Node JS
+
+	node sep-server.js
+Angular Custom Services - 
+
+	1) Reusability of data and logic
+	2) Simple MVVM implementation
+	3) Singleton instances
+	4) Usages of IoC and DI
+	5) Loose Coupling
+	6) Easy testing
+	
+The injector/provider [IoC container] scope is available at 4 levels in Angular framework - 
+
+	1) Platform
+	2) Root
+	3) any [Deprecated]
+	4) null/undefined = Module Level/Component/Directive Level
+
+Angular framework comes with Http support out-of-the-box
+	The package to work Http - 
+		@angular/common/http
+			HttpClientModule
+				HttpClient [Service]
+					1) get()/get<T>() => Observable<T>
+					2) post()/post<T>()  => Observable<T>
+					3) put()/put<T>()  => Observable<T>
+					4) delete()/delete<T>()  => Observable<T>
+
+RxJS - Reactive Extensions for JavaScript Library - Observable<T>. It is a core object RxJS
+
+
+Component Lifecycle Hooks - Special Methods [All methods come from individual Interface]
+
+
+
+Single Page Application - 
+	Routing Library
+		@angular/router
+			RouterModule
+			1) Route Declarations
+				http://localhost:4200 [Default Route] [Component]
+				http://localhost:4200/home [Sepcific Route] [Component]
+				http://localhost:4200/events [Sepcific Route] [Component]
+				http://localhost:4200/employees [Sepcific Route] [Component]
+				http://localhost:4200/events/1010 [Dynamic/Parameterized Route/] [Component]
+				http://localhost:4200/events/new [Component]
+				http://localhost:4200/login [Component]
+			2) A place holder where you want render a component associated with the route
+				<router-outlet></router-outlet>
+			3) Declarative route configuration
+			4) Programmatic routing
+				Router
+			5) Route Protection - Route Guards
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
