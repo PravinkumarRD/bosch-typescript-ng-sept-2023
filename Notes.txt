@@ -1,0 +1,498 @@
+Trainer Details - 
+
+Email - dabade.pravinkumar@gmail.com
+Phone - 9665622460
+
+Why Angular?
+
+1) Angular is a framework for developing Desktop, Web Broswer, Mobile Web, Mobile Native
+2) Progresive Web Application Development
+3) Angular framework is modular
+4) Angular also suggests Angular application development in modular way
+5) Eager loading and Lazy loading
+6) Multiple languages for developing Angular applications
+	[ES5/ESNext/Typescript/Dart]
+7) Two compilation models
+	[JIT - Just-In-Time] [Before 9 - Default]
+	[AoT - Ahead-Of-Time] [Default - Version - 9 and onwards]
+8) From Angular 2-8 We have View Engine as rendering engine/ From 9 and onwards, Ivy rendering engine
+9) Offers component based development
+10) Directives [Out-of-the-box/Custom]
+11) Angular Pipes for data formatting [Out-of-the-box/Custom]
+12) Single Page Application [SPA] Development
+13) Routing library [@angular/router]
+14) Rich Data Binding support - 
+	[Source-To-Destination/Destination-To-Source/Two-Way]
+15) Zone.js library
+16) CDC - Change Detection Cycle
+17) Internationalization [i18N - Library]
+18) IoC [Angular - Injector/Provider] and D.I. - Dependency Injection/ Inversion Principle
+19) HTTP Support [GET/POST/PUT/DELETE] with interception support
+20) Services/Custom Services [Reusing data and logic]
+21) Angular Development - 
+	1) Application
+	2) Library
+22) Angular Elements - Reuse Angular components in Non-angular applications [React, Vue, Html, ...]
+23) Angular Forms - 
+	1) Template Driven Forms
+	2) Reactive/Model Driven Forms
+24) Angular CLI tool - @angular/cli
+25) Angular framework has integration with third-party testing framework - Jasmine
+26) Karma Test runner
+27) Make your Angular application SEOs friendly, you have to render Angular application on Server [SSR - Server Side Rendering] - @angular/universal
+28) Rich Animation support @angular/animations
+29) Angular Material Library
+30) RxJS - Reactive Extensions For JavaScript - library [Observable-Observer Pattern]
+
+Angular Application Bootstrapping Process
+
+5-Major building of Angular Framework - All of them are classes
+
+	1) NgModule [Menifest/List]
+	2) Component
+	3) Directive
+	4) Pipe
+	5) Service
+
+Let's create first Angular application - 
+
+
+@NgModule({
+    imports:[Day2Module], Load all the dependency modules for eager loading 
+    exports:[], //Anything which you want to access outside the module when the module is loaded with eager loading
+    declarations:[], //Components, Pipes and Directives
+    providers:[], //Services
+    bootstrap:[RootComp, XyzComp] //First components to be rendered when you run Angular application
+})
+class Day1Module{
+
+}
+
+@NgModule({
+    imports:[],
+    exports:[B, P2, D2],
+    declarations:[A, B, C, P1, P2, P3, D1, D2],
+    providers:[]
+})
+class Day2Module{
+
+}
+
+@Component({
+    selector:'', //The name of an element forExample [<bosch-root></bosch-root>]
+    template:''// Display
+})
+
+https://codepen.io/pravinkumarcode/pen/PoaEXyQ
+
+How do you cofigure CSS Bootstrap Framework in Angular application?
+
+Assignment - 
+
+Create new Angular application with the name bosch-events-portal
+
+Step - 1 [One time process only]
+	npm install @angular/cli
+
+Step - 2 - To create new Angular application
+	ng new application-name
+
+Step - 3
+	cd application-name
+
+Step - 4 - To run the Angular application in Development mode
+	ng serve
+	
+Configure Bootswatch United theme along with bootstrap JavaScript Bundle in this application.
+
+Step - 1 - install Bootstrap and Bootswatch packages in Angular application
+		npm install bootstrap bootswatch
+Step - 2 - Open angular.json and configure both the packages [.css and .js] in build section under architect object - 
+	"styles": [
+              "bootswatch/dist/united/bootstrap.min.css",
+              "src/styles.css"
+            ],
+        "scripts": [
+              "bootstrap/dist/js/bootstrap.bundle.min.js"
+            ]
+PoC - Proof Of Concept 
+	Bosch Events Portal - Fullstack Application [Java/Microsoft web API] [SPA] [Authentication and Authorization] [Role Based Authorization] [Security Trimming]
+
+src
+	main.ts
+	app
+		app.module.ts
+		app.component.[ts,spec.ts,html,css]
+		employees	
+			employees.module.ts
+			components
+				employees-list
+					employees-list.component.[ts,spec.ts,html,css]
+				employee-details
+					employee-details.component.[ts,spec.ts,html,css]
+				register-employee
+					register-employee.component.[ts,spec.ts,html,css]
+			models
+				employee.[ts,spec.ts]
+			pipes
+				one.pipe.[ts,spec.ts]
+			directives
+				highlighter.directive.[ts,.spec.ts]
+			services
+				employees.service.[ts/spec.ts]
+		events
+			events.module.ts
+			components
+				...
+			models
+				...
+			pipes
+				...
+			directives
+				...
+			services
+				...
+		home
+			home.module.ts
+			components
+				...
+		navigation
+			navigation.module.ts
+			components
+				nav-bar
+					nav-bar.component.[ts, spec.ts, html, css]
+				footer
+					footer.component.[ts, spec.ts, html, css]
+		security
+			
+			security.module.ts
+			components
+				login, user-registration, forgot-password, change-password
+				...
+			models
+				...
+			pipes
+				...
+			directives
+				...
+			services
+				...
+		shared
+			shared.module.ts
+			components
+				...
+			models
+				...
+			pipes
+				...
+			directives
+				...
+			services
+				...
+
+Angular CLI tool generate commands
+
+	ng g m, c, p, d, class, interface name-of-the-feature
+
+	For Example  - 
+
+		ng g m employees
+			Create employees folder and add module.ts file
+		ng g c employees/components/employees-list
+			Create components folder and inside components folder, it will create employees-list folder in which it will add 4 file for the component
+		ng g class employees/models/employee
+			employee.ts
+		ng g s employees/services/employees
+			employees.service.ts
+
+		ng g p employees/pipes/pipe-name
+
+		ng g d employees/directives/directive-name
+			directive-name
+				directive-name.directive.ts/.sepc.ts
+		ng g interface employees/models/interface-name
+
+		...
+
+			
+Introduction to Component - 
+
+	Two types of Templates - [template property of Component Metadata]
+		1) In-line Template
+			i) Single/Double quotes
+			ii) Multi-line template code using backtick syntax
+		2) Linked/External Template - [templateUrl property of Component Metadata] [.html file]
+
+	CSS
+		1) Inline - [styles property of component metadata]
+		2) External Styles - [stylesUrl:[] -  property of component metadata]
+
+
+To format the data which you are displaying, you will use Pipes in Angular application - 
+
+	1) In-Built Pipes
+	2) Third-Party pipes
+	3) Custom Pipes
+		i) Develop a pipe which will display the date in a different language
+			property|globalDate:'es-ES':'':''
+		ii) Develop a pipe which will filter the events list by event name
+			events|filterEventByName:'Q'
+
+Pipes are used in Templates - 
+
+	{{title|pipe-name}}
+	[innerText]="title|pipe-name"
+
+
+
+import { Pipe, PipeTransform } from '@angular/core'
+
+
+@Pipe({
+	name:'date'
+})
+export class DatePipe implements PipeTransform{
+	transform(value:unknown, ...args:unknown[]):unknown{
+		//logic
+	}
+}
+
+
+property|date
+
+
+
+Two way binding, you have to use ngModel directive - 
+
+	@angular/forms
+		FormsModule
+			ngModel
+
+
+Intro to MongoDB Server
+
+RDBMS						NoSQL - MongoDB Server
+	Databases					Databases
+		Tables						Collection
+			Rows and Columns				Documents
+
+What is document?
+	Document is a JSON like object
+
+Queries - 
+
+	1) Create new database in MongoDB
+		use bosch-events-db;
+	2) List all the databases under MongoDB server
+		show dbs;
+	3) Create new collection
+		db.createCollection("users");
+		db.createCollection("events");
+	4) Show all collections
+		show collections;
+	5) Insert documents in MongoDB Collection
+		db.users.insertOne({})
+
+REST API for Node JS [Java Developers only]
+	Below are the endpoints - 
+
+		1) http://localhost:9090/api/events [GET - This fetch all the documents from events collection]
+		2) http://localhost:9090/api/events/1002 [GET - This fetch single document from events collection]	
+		3) http://localhost:9090/api/events [POST - Insert new event in events collection]
+
+How to run REST API developed using Node JS
+
+	node sep-server.js
+Angular Custom Services - 
+
+	1) Reusability of data and logic
+	2) Simple MVVM implementation
+	3) Singleton instances
+	4) Usages of IoC and DI
+	5) Loose Coupling
+	6) Easy testing
+	
+The injector/provider [IoC container] scope is available at 4 levels in Angular framework - 
+
+	1) Platform
+	2) Root
+	3) any [Deprecated]
+	4) null/undefined = Module Level/Component/Directive Level
+
+Angular framework comes with Http support out-of-the-box
+	The package to work Http - 
+		@angular/common/http
+			HttpClientModule
+				HttpClient [Service]
+					1) get()/get<T>() => Observable<T>
+					2) post()/post<T>()  => Observable<T>
+					3) put()/put<T>()  => Observable<T>
+					4) delete()/delete<T>()  => Observable<T>
+
+RxJS - Reactive Extensions for JavaScript Library - Observable<T>. It is a core object RxJS
+
+
+Component Lifecycle Hooks - Special Methods [All methods come from individual Interface]
+
+
+
+Single Page Application - 
+	Routing Library
+		@angular/router
+			RouterModule
+			1) Route Declarations [Parent Routes and Children Routes]
+				http://localhost:4200 [Default Route] [DefaultComponent]
+				http://localhost:4200/home [Sepcific Route] [HomeComponent]
+				http://localhost:4200/events [Sepcific Route] [EventsListComponent]
+				http://localhost:4200/employees [Sepcific Route] [EmployeesListComponent]
+				http://localhost:4200/events/1010 [Dynamic/Parameterized Route/] [EventDetailsComponent]
+				http://localhost:4200/events/new [RegisterEventComponent]
+				http://localhost:4200/login [LoginComponent]
+			2) A place holder where you want render a component associated with the route
+				<router-outlet></router-outlet>
+			3) Declarative route configuration
+				[routerLink]='/', routerLinkActive
+			4) Programmatic routing
+				Router - Service
+			5) Route Protection - Route Guards [Starting with Angular 15 and onwards, Route guards are implemented with the help of function. Before that, the guards were classes]
+				route interface object - 
+				{
+					path : 'events',
+					component : EventsListComponent,
+					canActivate: [GuradFunction1, GuradFunction2] //True or False
+				}
+				
+			6) Router Events
+
+
+
+Day-5 Agenda - 
+
+1) Develop SPA
+	For route declaration, we will create a separate module and import RouterModule as a dependency and finally we will re-export the RouterModule with all the routes registration
+	We will load the router router module as a dependency of our root module [app.module.ts]
+
+2) Implement Parameterized Route
+3) Authentication and Authorization
+	i) Let's work with Login component [Angular forms - Template Driven Form]
+		Angular decides the strcuture of this form internally
+	ii) Two-Way data binding - FormsModule - 
+		[(ngModel)]="user.email", [(ngModel)]="user.password"
+4) Route Protection - Route Guards 
+5) Angular Forms - Reactive/Model Driven Forms
+	Developers decide the form strcuture
+6) Lazy Loading of modules in Angular SPA
+
+
+
+With HTTP, to pass something common with every single HttpReqest, you will implement interceptors. You can have one more than one interceptors
+
+	1) HttpRequest Interception
+	1) HttpResponse Interception
+
+
+Angular Reactive Form or Model Driven Form - 
+
+	@angular/forms
+		ReactiveFormsModule [Exports number directives which you need to bind your model properties with input elements of a form]
+		FormGroup, FormControl, Validators
+
+1) FormGroup is a collection of FormControls
+2) FormControl contains default value and zero or one or more than one validations
+
+<form [formGoup]="registerForm.eventFrom">
+	<input type="number" formControlName="eventId" />
+	<input type="text" formControlName="eventCode" />
+</form>
+
+class RegisterEventModel{
+	eventForm:FormGroup = new FormGroup({
+		eventId: new FormControl(defaultValue, Validators.required),
+		eventCode: new FormControl(defaultValue, [Validators.required, Validators.minlength(6), Validators.maxlength(6)]),
+	});
+}
+
+	class Customer{
+		[key]
+		customerId
+		[Required]
+		contactName
+		city
+	}
+	class Customer{
+		@key
+		customerId
+		@required
+		contactName
+		city
+	}
+
+Create new registerEvent method which will make post request to your REST API and after successful insertion of the record in database collection/table, redirect the user to events route.
+
+Lazy Loading - Angular Modules
+	Work with Parent and Children routes
+
+	Parent Route registration must be done at root module level with 
+		RouterModule.root();
+	Childern routes registration must be done at individual Module Level
+Finally, load the module using import() function in Angular application when someone sends a request to parent route
+
+For Example - 
+
+	1) /employees - Parent Route
+		/ - Default Child - EmployeesListComponent
+		/new - RegisterNewEmployee component
+
+	2) /events - Parent Route
+		/ - Default Child Route - EventsListComponent
+		/new - RegisterNewEvent Component
+		/:id - EventDetailsComponent
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
